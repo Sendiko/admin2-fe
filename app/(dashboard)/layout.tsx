@@ -182,10 +182,10 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300">
+    <div className="min-h-screen flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 print:bg-white print:text-black">
 
       {/* 1. Desktop Sidebar */}
-      <aside className="hidden lg:flex flex-col w-64 border-r border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900 shrink-0">
+      <aside className="hidden lg:flex flex-col w-64 border-r border-slate-200/80 dark:border-slate-800/80 bg-white dark:bg-slate-900 shrink-0 print:hidden">
         <div className="h-16 flex items-center gap-3 px-6 border-b border-slate-200/80 dark:border-slate-800/80">
           <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-blue-brand-600 to-indigo-600 flex items-center justify-center text-white font-bold">
             A
@@ -310,7 +310,7 @@ export default function DashboardLayout({
       {/* 3. Main Workspace Container */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header */}
-        <header className="h-16 flex items-center justify-between px-6 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800/80 sticky top-0 z-30">
+        <header className="h-16 flex items-center justify-between px-6 bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800/80 sticky top-0 z-30 print:hidden">
           <div className="flex items-center gap-3">
             <button
               onClick={() => setIsMobileOpen(true)}
@@ -334,7 +334,7 @@ export default function DashboardLayout({
         </header>
 
         {/* Content Wrapper */}
-        <div className="flex-1 p-6 md:p-8 overflow-y-auto">
+        <div className="flex-1 p-6 md:p-8 overflow-y-auto print:p-0 print:m-0 print:overflow-visible">
           {children}
         </div>
       </div>

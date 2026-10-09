@@ -34,3 +34,37 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Running with Docker
+
+### Using Docker Compose (Recommended)
+
+1. (Optional) Create your local `.env` file from [.env.example](file:///Users/mac/WebProjects/admin2-fe/.env.example):
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Build and start the container:
+   ```bash
+   docker compose up --build -d
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000).
+
+4. Stop the container:
+   ```bash
+   docker compose down
+   ```
+
+### Using Docker CLI Directly
+
+1. Build the Docker image:
+   ```bash
+   docker build --build-arg API_URL="http://192.168.18.10:8003/api" -t admin2-fe .
+   ```
+
+2. Run the container:
+   ```bash
+   docker run -p 3000:3000 -e API_URL="http://192.168.18.10:8003/api" --name admin2-fe admin2-fe
+   ```
+

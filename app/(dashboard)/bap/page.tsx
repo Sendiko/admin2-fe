@@ -77,7 +77,7 @@ export default function BapPage() {
       await api.delete(`/bap/${id}`);
       setBaps(baps.filter((b) => b.id !== id));
       setSuccessMsg("BAP berhasil dihapus.");
-    } catch (err) {
+    } catch {
       setBaps(baps.filter((b) => b.id !== id));
       setSuccessMsg("BAP dihapus secara lokal (API offline).");
     }
@@ -92,15 +92,27 @@ export default function BapPage() {
           <h2 className="text-xl font-bold text-slate-900 dark:text-slate-50">Berita Acara Pekerjaan (BAP)</h2>
         </div>
 
-        <Link
-          href="/bap/create"
-          className="flex items-center gap-2 px-5 py-2.5 bg-blue-brand-600 hover:bg-blue-brand-700 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 transition-all self-start active:scale-95 animate-pulse-subtle"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
-          </svg>
-          Catat BAP Kegiatan
-        </Link>
+        <div className="flex items-center gap-2.5 self-start">
+          <Link
+            href="/bap/export"
+            className="flex items-center gap-2 px-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-200 font-semibold text-sm rounded-xl shadow-sm transition-all active:scale-95"
+          >
+            <svg className="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+            Export PDF
+          </Link>
+
+          <Link
+            href="/bap/create"
+            className="flex items-center gap-2 px-5 py-2.5 bg-blue-brand-600 hover:bg-blue-brand-700 text-white font-semibold text-sm rounded-xl shadow-md shadow-blue-500/10 transition-all active:scale-95 animate-pulse-subtle"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15"></path>
+            </svg>
+            Catat BAP Kegiatan
+          </Link>
+        </div>
       </div>
 
       {successMsg && (
